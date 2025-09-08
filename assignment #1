@@ -1,0 +1,83 @@
+public class Main { 
+
+ 
+
+    public void onCreate() { 
+
+        System.out.println("onCreate: Activity is being created"); 
+
+    } 
+
+ 
+
+    public void onStart() { 
+
+        System.out.println("onStart: Activity is now visible"); 
+
+    } 
+
+ 
+
+    public void onResume() { 
+
+        System.out.println("onResume: Activity is ready to interact"); 
+
+    } 
+
+ 
+
+    public void onPause() { 
+
+        System.out.println("onPause: Activity is partially visible"); 
+
+    } 
+
+ 
+
+    public void onStop() { 
+
+        System.out.println("onStop: Activity is no longer visible"); 
+
+    } 
+
+ 
+
+    public void onDestroy() { 
+
+        System.out.println("onDestroy: Activity is destroyed"); 
+
+    } 
+
+ 
+
+    public static void main(String[] args) { 
+
+        Main activity = new Main(); 
+
+ 
+
+        // Simulating the activity lifecycle 
+
+        activity.onCreate(); 
+
+        activity.onStart(); 
+
+        activity.onResume(); 
+
+ 
+
+        // Simulate user leaving the activity 
+
+        activity.onPause(); 
+
+        activity.onStop(); 
+
+ 
+
+        // Simulate closing the activity 
+
+        activity.onDestroy(); 
+
+    } 
+
+} 
