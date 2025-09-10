@@ -1,83 +1,64 @@
-public class Main { 
+public class Main {
 
- 
+    // Lifecycle methods
+    public void onCreate() {
+        System.out.println("onCreate: Activity is being created");
+    }
 
-    public void onCreate() { 
+    public void onStart() {
+        System.out.println("onStart: Activity is now visible");
+    }
 
-        System.out.println("onCreate: Activity is being created"); 
+    public void onResume() {
+        System.out.println("onResume: Activity is ready to interact");
+    }
 
-    } 
+    public void onPause() {
+        System.out.println("onPause: Activity is partially visible (user leaving)");
+    }
 
- 
+    public void onStop() {
+        System.out.println("onStop: Activity is no longer visible");
+    }
 
-    public void onStart() { 
+    public void onDestroy() {
+        System.out.println("onDestroy: Activity is destroyed");
+    }
 
-        System.out.println("onStart: Activity is now visible"); 
+    // Helper method para lagyan ng delay sa simulation
+    private void waitFor(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
 
-    } 
+    public static void main(String[] args) {
+        Main activity = new Main();
 
- 
+        System.out.println("=== Simulating Android Activity Lifecycle ===\n");
 
-    public void onResume() { 
+        // Simulating the activity lifecycle
+        activity.onCreate();
+        activity.waitFor(1000);
 
-        System.out.println("onResume: Activity is ready to interact"); 
+        activity.onStart();
+        activity.waitFor(1000);
 
-    } 
+        activity.onResume();
+        activity.waitFor(2000);
 
- 
+        // Simulate user leaving the activity
+        activity.onPause();
+        activity.waitFor(1000);
 
-    public void onPause() { 
+        activity.onStop();
+        activity.waitFor(1000);
 
-        System.out.println("onPause: Activity is partially visible"); 
+        // Simulate closing the activity
+        activity.onDestroy();
 
-    } 
-
- 
-
-    public void onStop() { 
-
-        System.out.println("onStop: Activity is no longer visible"); 
-
-    } 
-
- 
-
-    public void onDestroy() { 
-
-        System.out.println("onDestroy: Activity is destroyed"); 
-
-    } 
-
- 
-
-    public static void main(String[] args) { 
-
-        Main activity = new Main(); 
-
- 
-
-        // Simulating the activity lifecycle 
-
-        activity.onCreate(); 
-
-        activity.onStart(); 
-
-        activity.onResume(); 
-
- 
-
-        // Simulate user leaving the activity 
-
-        activity.onPause(); 
-
-        activity.onStop(); 
-
- 
-
-        // Simulate closing the activity 
-
-        activity.onDestroy(); 
-
-    } 
-
-} 
+        System.out.println("\n=== Simulation Ended ===");
+    }
+}
