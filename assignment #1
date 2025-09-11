@@ -1,64 +1,52 @@
-public class Main {
+public class MainActivity extends AppCompatActivity {
 
-    // Lifecycle methods
-    public void onCreate() {
-        System.out.println("onCreate: Activity is being created");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // Initialize UI components and load data
+        Log.d("Lifecycle", "onCreate");
     }
 
-    public void onStart() {
-        System.out.println("onStart: Activity is now visible");
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Start animations or visual effects
+        Log.d("Lifecycle", "onStart");
     }
 
-    public void onResume() {
-        System.out.println("onResume: Activity is ready to interact");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Start playing media
+        Log.d("Lifecycle", "onResume");
     }
 
-    public void onPause() {
-        System.out.println("onPause: Activity is partially visible (user leaving)");
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save data, stop background processes
+        Log.d("Lifecycle", "onPause");
     }
 
-    public void onStop() {
-        System.out.println("onStop: Activity is no longer visible");
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Release resources
+        Log.d("Lifecycle", "onStop");
     }
 
-    public void onDestroy() {
-        System.out.println("onDestroy: Activity is destroyed");
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        // Restore state
+        Log.d("Lifecycle", "onRestart");
     }
 
-    // Helper method para lagyan ng delay sa simulation
-    private void waitFor(int milliseconds) {
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    public static void main(String[] args) {
-        Main activity = new Main();
-
-        System.out.println("=== Simulating Android Activity Lifecycle ===\n");
-
-        // Simulating the activity lifecycle
-        activity.onCreate();
-        activity.waitFor(1000);
-
-        activity.onStart();
-        activity.waitFor(1000);
-
-        activity.onResume();
-        activity.waitFor(2000);
-
-        // Simulate user leaving the activity
-        activity.onPause();
-        activity.waitFor(1000);
-
-        activity.onStop();
-        activity.waitFor(1000);
-
-        // Simulate closing the activity
-        activity.onDestroy();
-
-        System.out.println("\n=== Simulation Ended ===");
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Release all resources
+        Log.d("Lifecycle", "onDestroy");
     }
 }
